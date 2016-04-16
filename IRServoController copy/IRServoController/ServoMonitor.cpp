@@ -20,10 +20,10 @@ static unsigned int dutyCycle2 = CENTERED_DUTY;
 Servo servo1;
 Servo servo2;
 
-void AttachServos(int positionServo1, int positionServo2)
+void AttachServos()
 {
-   servo1.attach(10, positionServo1, positionServo1);
-   servo2.attach(9, positionServo2, positionServo2);
+   servo1.attach(10);
+   servo2.attach(9);
 }
 
 void WriteServoServoPosition(int theServo, int dutyCycle)
