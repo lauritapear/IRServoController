@@ -2,8 +2,8 @@
 #include "ServoMonitor.h"
 #include "IRServoController.h"
 
-int addressFirstServo = 0;
-int addressSecondServo = 0;
+static const int addressFirstServo = 0x00;
+static const int addressSecondServo = 0x100;
 int valueServo1;
 int valueServo2;
 

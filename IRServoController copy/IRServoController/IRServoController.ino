@@ -35,16 +35,14 @@ void InitializeEepromTimer(int servoMotor)
 }
 
 void setup() {
-   
-    AttachServos() ;
-    SetServosToInitialPosition();
+
     InitializePins();
+    SetServosToInitialPosition();
+    AttachServos();
     
+
     Serial.begin(9600);
     irrecv.enableIRIn();
-
-   
-    
     wdt_enable(WDTO_1S); //Do we really need this?
 }
 
