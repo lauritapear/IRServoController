@@ -3,7 +3,13 @@
 #define SERVOMONITOR_H
 #include <Servo.h>
 
+#define SERVO_1_PIN (10)
+#define SERVO_2_PIN (9)
+
 void AttachServos();
+void AttachServo(Servo servo, int pinNumber);
+void DetachServo(Servo servo);
+Servo GetServo(int servoNumber);
 void WriteServoServoPosition(int theServo, int dutyCycle);
 void WriteServo1(int dutyCycle);
 void WriteServo2(int dutyCycle);

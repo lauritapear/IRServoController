@@ -4,6 +4,8 @@
 #include "Arduino.h"
 #include <Servo.h>
 
+
+
 extern "C" {
  #include <stddef.h>
  #include <stdint.h>
@@ -22,8 +24,30 @@ Servo servo2;
 
 void AttachServos()
 {
-   servo1.attach(10);
-   servo2.attach(9);
+   servo1.attach(SERVO_1_PIN);
+   servo2.attach(SERVO_2_PIN);
+}
+
+void AttachServo(Servo servo, int pinNumber)
+{
+  servo.attach(pinNumber);
+}
+
+void DetachServo(Servo servo)
+{
+  servo.detach();
+}
+
+Servo GetServo(int servoNumber)
+{
+  if (servoNumber == FirstServo)
+  {
+    return servo1;
+  }
+  else if(servoNumber == SecondServo)
+  {
+     return servo2;
+  }
 }
 
 void WriteServoServoPosition(int theServo, int dutyCycle)
@@ -52,38 +76,38 @@ void WriteServo2(int dutyCycle)
 
 void MonitorMotorIncrementButton(unsigned int *dutyCycle, unsigned int dutyMax, void (*WriteServo)(int duty))
 {
-    if(*dutyCycle < dutyMax)
-    {
-        *dutyCycle += DUTY_DELTA;
-        WriteServo(*dutyCycle);
-        delay(10);
-    }
+  if(*dutyCycle < dutyMax)
+  {
+      *dutyCycle += DUTY_DELTA;
+      WriteServo(*dutyCycle);
+      delay(10);
+  }
 }
 
 void MonitorMotorDecrementButton(unsigned int *dutyCycle, unsigned int dutyMin, void (*WriteServo)(int duty))
 {
-    if(*dutyCycle > dutyMin)
-    {
-        *dutyCycle -= DUTY_DELTA;
-        WriteServo(*dutyCycle);
-        delay(10);
-    }
+  if(*dutyCycle > dutyMin)
+  {
+      *dutyCycle -= DUTY_DELTA;
+      WriteServo(*dutyCycle);
+      delay(10);
+  }
 }
 
 void MonitorCenterButton()
 {
-        dutyCycle1 = CENTERED_DUTY;
-        dutyCycle2 = CENTERED_DUTY;
-        WriteServo1(dutyCycle1);
-        delay(10);
-        WriteServo2(dutyCycle2);
-        delay(10);      
+    dutyCycle1 = CENTERED_DUTY;
+    dutyCycle2 = CENTERED_DUTY;
+    WriteServo1(dutyCycle1);
+    delay(10);
+    WriteServo2(dutyCycle2);
+    delay(10);      
 }
 
 void MonitorRelayButton()
 {
-        relayState = !relayState;
-        digitalWrite(RELAY_OUTPUT_PIN, relayState);
+    relayState = !relayState;
+    digitalWrite(RELAY_OUTPUT_PIN, relayState);
 }
 
 void MotorController(int servoMotor, int option)
