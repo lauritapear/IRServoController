@@ -35,10 +35,10 @@ void InitializeEepromTimer(int servoMotor)
 }
 
 void setup() {
-
-    InitializePins();
     SetServosToInitialPosition();
     AttachServos();
+    
+    InitializePins();
     
     Serial.begin(9600);
     irrecv.enableIRIn();

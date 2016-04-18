@@ -11,10 +11,6 @@ void ReadEeprom()
 {
   valueServo1 = EEPROM.read(addressFirstServo);
   valueServo2 = EEPROM.read(addressSecondServo);
-//  Serial.print(valueServo1, DEC);
-//  Serial.println("Servo1 value at start:");
-//  Serial.print(valueServo2, DEC);
-//  Serial.println("Servo2 value at start:");
 }
 
 int GetServoValue(int servo)
@@ -33,11 +29,13 @@ void WriteEeprom(int servoMotor)
 {
   if (servoMotor == FirstServo)
   {
-  EEPROM.update(addressFirstServo, GetDutyCycle(FirstServo));
+     EEPROM.update(addressFirstServo, GetDutyCycle(FirstServo));
+     DetachServo(GetServo(FirstServo));
   }
   else
   {
      EEPROM.update(addressSecondServo, GetDutyCycle(SecondServo));
+     DetachServo(GetServo(SecondServo));
   }
 }
 
