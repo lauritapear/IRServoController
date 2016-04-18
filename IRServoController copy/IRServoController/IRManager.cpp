@@ -35,6 +35,8 @@ void TranslateIR(decode_results *results)
     case CENTER_BUTTON_SIGNAL:
     AttachServos();
     MonitorCenterButton();
+    InitializeEepromTimer(FirstServo);
+    InitializeEepromTimer(SecondServo);
     break;
 
     case RELAY_BUTTON_SIGNAL:
