@@ -5,6 +5,10 @@
 #include <Event.h>
 #include <Timer.h>
 
+#define SERVO_1_UPPER_BOUNDARY (160) //In degrees
+#define SERVO_1_LOWER_BOUNDARY (20)  //In degrees
+#define SERVO_2_UPPER_BOUNDARY (160) //In degrees
+#define SERVO_2_LOWER_BOUNDARY (20)  //In degrees
 
 #define RELAY_OUTPUT_PIN  8
 #define RECV_PIN  11

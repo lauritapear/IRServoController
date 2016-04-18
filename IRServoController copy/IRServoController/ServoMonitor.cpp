@@ -24,13 +24,13 @@ Servo servo2;
 
 void AttachServos()
 {
-   servo1.attach(SERVO_1_PIN);
-   servo2.attach(SERVO_2_PIN);
+   servo1.attach(SERVO_1_PIN, SERVO_1_LOWER_BOUNDARY, SERVO_1_UPPER_BOUNDARY);
+   servo2.attach(SERVO_2_PIN, SERVO_2_LOWER_BOUNDARY, SERVO_2_UPPER_BOUNDARY);
 }
 
-void AttachServo(Servo servo, int pinNumber)
+void AttachServo(Servo servo, char pinNumber, char minBoundary, char maxBoundary)
 {
-  servo.attach(pinNumber);
+  servo.attach(pinNumber, minBoundary, maxBoundary);
 }
 
 void DetachServo(Servo servo)
