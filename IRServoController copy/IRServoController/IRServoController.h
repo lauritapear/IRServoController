@@ -5,8 +5,8 @@
 #include <Event.h>
 #include <Timer.h>
 
-#define SERVO_1_UPPER_BOUNDARY (160) //In degrees
-#define SERVO_1_LOWER_BOUNDARY (20)  //In degrees
+#define SERVO_1_UPPER_BOUNDARY (120) //In degrees
+#define SERVO_1_LOWER_BOUNDARY (60)  //In degrees
 #define SERVO_2_UPPER_BOUNDARY (160) //In degrees
 #define SERVO_2_LOWER_BOUNDARY (20)  //In degrees
 

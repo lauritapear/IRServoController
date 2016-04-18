@@ -1,4 +1,3 @@
-//#include <Event.h>
 #include <Timer.h>
 #include <EEPROM.h>
 #include <Servo.h>
@@ -40,9 +39,9 @@ void setup() {
     SetServosToInitialPosition();
     AttachServos();
     
-    Serial.begin(9600);
+//    Serial.begin(9600);
     irrecv.enableIRIn();
-    wdt_enable(WDTO_1S); //Do we really need this?
+    wdt_enable(WDTO_1S);
 }
 
 void loop() {

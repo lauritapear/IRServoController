@@ -7,7 +7,7 @@
 #define SERVO_2_PIN (9)
 
 void AttachServos();
-void AttachServo(Servo servo, int pinNumber);
+void AttachServo(Servo servo, char pinNumber, char minBoundary, char maxBoundary);
 void DetachServo(Servo servo);
 Servo GetServo(int servoNumber);
 void WriteServoServoPosition(int theServo, int dutyCycle);
