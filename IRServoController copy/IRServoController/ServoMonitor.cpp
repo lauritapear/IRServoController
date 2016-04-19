@@ -99,9 +99,9 @@ void MonitorCenterButton()
     dutyCycle1 = CENTERED_DUTY;
     dutyCycle2 = CENTERED_DUTY;
     WriteServo1(dutyCycle1);
-    delay(10);
+    delay(250);
     WriteServo2(dutyCycle2);
-    delay(10);      
+    delay(50);      
 }
 
 void MonitorRelayButton()
