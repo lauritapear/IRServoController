@@ -94,14 +94,59 @@ void MonitorMotorDecrementButton(unsigned int *dutyCycle, unsigned int dutyMin, 
   }
 }
 
+void CenterServoSlowly(Servo servo, char servoIndex)
+{
+//      while((abs(servo.read()) - CENTERED_DUTY) != 0)
+//     {
+//      char currentPosition = servo.read();
+//       if(servo.read() > 90)
+//       {
+//        currentPosition--;
+//        servo.write(currentPosition);
+//        delay(20);
+//       }
+//       else
+//       {
+//        currentPosition++;
+//        servo.write(currentPosition);
+//        delay(20);
+//       }
+//     }
+  if(servo.read() > 90)
+  {
+    while((GetDutyCycle(servoIndex)) >= CENTERED_DUTY)
+    {
+       char currentPosition = GetDutyCycle(servoIndex);
+       currentPosition--;
+       WriteServoServoPosition(servoIndex, currentPosition);
+       delay(50);
+    }
+       
+  }else
+  {
+    while((GetDutyCycle(servoIndex)) <= CENTERED_DUTY)
+    {
+      char currentPosition = GetDutyCycle(servoIndex);
+      currentPosition++;
+      WriteServoServoPosition(servoIndex, currentPosition);
+      delay(50);
+    }
+  }
+}
+
 void MonitorCenterButton()
 {
-    dutyCycle1 = CENTERED_DUTY;
-    dutyCycle2 = CENTERED_DUTY;
-    WriteServo1(dutyCycle1);
-    delay(10);
-    WriteServo2(dutyCycle2);
-    delay(10);      
+    char duryTemp1 = GetDutyCycle(FirstServo);
+    char duryTemp2 = GetDutyCycle(SecondServo);
+
+    CenterServoSlowly(servo1, FirstServo);
+    delay(100);
+    CenterServoSlowly(servo2, SecondServo);
+//
+//    WriteServo1(dutyCycle1);
+//    delay(250);
+//    WriteServo2(dutyCycle2);
+//    delay(250);    
 }
 
 void MonitorRelayButton()
